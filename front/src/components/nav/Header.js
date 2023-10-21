@@ -33,17 +33,19 @@ const Header = () => {
 
   const dashboard=()=>{
     if(user && user.role==="Admin"){
-      history.push("/admin/category")
+      history.push("/admin/dashboard")
+    }else if(user && user.role==="Customer"){
+      history.push("/customer/dashboard")
+    }else if(user && user.role==="Owner"){
+      history.push("/owner/dashboard")
     }else{
-      console.log("not authhhhhorized");
+      history.push("/")
     }
   }
 
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Item key="home" icon={<AppstoreOutlined />}>
-        <Link to="/">Home</Link>
-      </Item>
+      <Item key="home" icon={<AppstoreOutlined />}><Link to="/">Home</Link></Item>
       {!token && <Item key="login" icon={<ShoppingOutlined />}><Link to="/login">Login</Link></Item>}
       {token && <Item key="logout" icon={<ShoppingOutlined />} onClick={logout}>Logout</Item>}
       {user && <Item key="dashboard" icon={<ShoppingOutlined />} onClick={dashboard}>Dashboard</Item>}

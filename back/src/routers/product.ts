@@ -12,23 +12,16 @@ const router=express.Router();
 
 router.post('/api/product',
 [
-    body('name')
-        .isString()
-        .withMessage('phone number is string'),
-    body('catid')
-        .isString()
+    body('product')
         .notEmpty()
-        .withMessage('cat id is string required'),
-    body('subid')
-        .isString()
-        .notEmpty()
-        .withMessage('subcat id is string required'),
+        .withMessage('product is required'),
 ],
 validateRequest,
 authGuard,
 isAdmin,
 async(req,res)=>{
-    const {name,catid,subid}=req.body;
+    
+    const {name,catid,subid}=req.body.product;
     let cat=await Cat.findById(new mongoose.Types.ObjectId(catid) )
     let subcat=await SubCat.findById(new mongoose.Types.ObjectId(subid));
     if(!cat || !subcat){
@@ -42,7 +35,6 @@ async(req,res)=>{
     await product.save();
     res.status(200).send(product);
 });
-
 
 router.get('/api/product/all/', 
     async(req:Request,res:Response)=>{

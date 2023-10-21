@@ -16,11 +16,12 @@ router.post('/api/inquiry',
 [
     body('pid')
         .isString()
-        .withMessage('phone number is string'),
+        .withMessage('pid is string'),
 ],
 validateRequest,
 authGuard,
 async(req,res)=>{
+    
     const {pid}=req.body;
     let product=await Product.findById(new mongoose.Types.ObjectId(pid))
     if(!product){

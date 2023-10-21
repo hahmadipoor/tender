@@ -24,6 +24,7 @@ app.use(subcatRouter);
 app.use(productRouter);
 app.use(inquiryRouter);
 app.use(offeringRouter);
+app.use(inquiryRouter);
 
 app.all('*', async () => {
      throw new NotFoundError();
