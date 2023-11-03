@@ -41,6 +41,8 @@ validateRequest,
 authGuard,
 async(req,res)=>{    
     const user=await User.findById(req.user.id);
+    console.log(user);
+    
     res.status(200).send(user);
 });
 

@@ -9,6 +9,7 @@ import mongoose, { mongo } from 'mongoose';
 import {Product} from "../models/product";
 import { Inquiry } from "../models/inquiry";
 import { InquiryState } from "../types/inquiry-status";
+import { UserRole } from "../types/user-role";
 
 const router=express.Router();
 
@@ -22,7 +23,7 @@ validateRequest,
 authGuard,
 async(req,res)=>{
     
-    const {pid}=req.body;
+    const {pid,address}=req.body;
     let product=await Product.findById(new mongoose.Types.ObjectId(pid))
     if(!product){
         throw new BadRequestError("Cat or subcat not found");
@@ -30,7 +31,8 @@ async(req,res)=>{
     const inquiry=Inquiry.build({
         product:pid,
         customer:req.user.id,
-        status:InquiryState.Pending
+        status:InquiryState.Pending,
+        address:address
     });
     await inquiry.save();
     res.status(200).send(product);
@@ -46,7 +48,12 @@ router.get('/api/iquiry/all',
     validateRequest,
     authGuard, 
     async(req,res)=>{
-        const inquiries=await Inquiry.find({customer:req.user.id}).populate('product');
+        let inquiries;
+        if(req.user.role===UserRole.Customer){
+            inquiries=await Inquiry.find({customer:req.user.id}).populate('product').populate('offers');
+        }else if(req.user.role===UserRole.Owner){
+            inquiries=await Inquiry.find().populate('product').populate('offers');
+        }
         res.status(200).send(inquiries);
     }
 );

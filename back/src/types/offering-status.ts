@@ -1,6 +1,6 @@
 export enum OfferingState {
     Pending = 'Pending',
-    Accepted = 'Accepted',
+    AcceptedByCustomer = 'AcceptedByCustomer',
     Cancelled = 'Sent',
 }
   

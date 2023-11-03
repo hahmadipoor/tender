@@ -4,17 +4,22 @@ import { SubCatDoc } from './subcat';
 import { UserDoc } from './user';
 import { ProductDoc } from './product';
 import { InquiryState } from '../types/inquiry-status';
+import { OfferingDoc } from './offering';
 
 interface InquiryAttrs {
   product: ProductDoc;
   customer: UserDoc;
   status?:InquiryState;
+  address?:string;
+  offers?:OfferingDoc[];
 }
 
 export interface InquiryDoc extends mongoose.Document {
     product: ProductDoc;
     customer: UserDoc;
     status?:InquiryState;
+    address?:string;
+    offers?:OfferingDoc[];
 }
 
 interface InquiryModel extends mongoose.Model<InquiryDoc> {
@@ -36,7 +41,16 @@ const inquirySchema = new mongoose.Schema({
     type: String,
     enum: Object.values(InquiryState),
     default: InquiryState.Pending
-  }
+  },
+  address: {
+    type: String,
+  },
+  offers: [
+    {
+      type : mongoose.Schema.Types.ObjectId, 
+      ref : 'Offering'
+    }
+  ],
 },
 );
 

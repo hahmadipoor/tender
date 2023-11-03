@@ -40,9 +40,11 @@ async(req,res)=>{
         bid:bid
     });
     await offering.save();
+    inquiry.offers.push(offering);
+    inquiry.status=InquiryState.AnsweredByOwner;
+    await inquiry.save();
     res.status(200).send(offering);
 });
-
 
 router.get('/api/offering/all',
     [

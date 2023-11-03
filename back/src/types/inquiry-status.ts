@@ -1,6 +1,7 @@
 export enum InquiryState {
     Pending = 'Pending',
-    Answered = 'Answered',
+    AnsweredByOwner = 'AnsweredByOwner',
     Cancelled = 'Cancelled',
+    Expired = 'Expired',
   }
   
