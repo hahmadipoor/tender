@@ -1,12 +1,9 @@
-import express,{Request,Response} from "express";
+import express from "express";
 import {body, header} from 'express-validator';
 import { validateRequest } from "../middlewares/validate-request";
-import { authGuard, isAdmin, isAdminOrOwner } from "../middlewares/auth";
-import { Cat } from "../models/category";
+import { authGuard, isAdminOrOwner } from "../middlewares/auth";
 import { BadRequestError } from "../errors/bad-request-error";
-import { SubCat } from "../models/subcat";
-import mongoose, { mongo } from 'mongoose';
-import {Product} from "../models/product";
+import mongoose from 'mongoose';
 import { Inquiry } from "../models/inquiry";
 import { InquiryState } from "../types/inquiry-status";
 import { Offering, OfferingDoc } from '../models/offering';

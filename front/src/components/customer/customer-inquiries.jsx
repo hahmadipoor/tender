@@ -37,7 +37,7 @@ const CustomerInquiries=()=>{
                                     {inquiry.product.name}&nbsp;&nbsp;
                                     {inquiry.address}
                                     {
-                                        inquiry.offers.length &&
+                                        inquiry.offers.length>0 &&
                                         inquiry.offers.map((offer)=>(
                                             <div key={offer._id} style={{background:'grey', width:'200px', alignContent:'right', justifyContent:'right'}}>
                                                 {offer.bid}

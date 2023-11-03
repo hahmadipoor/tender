@@ -15,6 +15,7 @@ const OwnerInquiries=()=>{
     useEffect(()=>{
         const fetchInquiries=async ()=>{
                 const fetchedInquiries=await getAllInquiries(token);
+                console.log(fetchedInquiries);
                 setInquiries(fetchedInquiries);
                 }
         fetchInquiries();
@@ -40,13 +41,18 @@ const OwnerInquiries=()=>{
                                     {inquiry.product.name}&nbsp;&nbsp;
                                     {
                                         inquiry.offers.find((offer)=>offer.owner===user._id) && 
-                                            (inquiry.offers.find((offer)=>offer.owner===user._id)).bid &&
+                                        (inquiry.offers.find((offer)=>offer.owner===user._id)).bid &&
+                                        <span>
+                                            {
+                                                (inquiry.offers.find((offer)=>offer.owner===user._id)).status==="AcceptedByCustomer" &&
                                                 <button>Deliver</button>
+                                            }
+                                        </span>
                                     }
                                     { 
                                         !(inquiry.offers.find((offer)=>offer.owner===user._id))&&
                                         <span >
-                                            <input  type="number"  onKeyUp={(e)=>{setBid(e.target.value)}}/> 
+                                            <input type="number" onKeyUp={(e)=>{setBid(e.target.value)}}/> 
                                             <button onClick={()=>handleClick(inquiry._id, bid)}>create Offer</button> 
                                         </span>    
                                     }

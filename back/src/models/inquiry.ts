@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-import { CatDoc } from './category';
-import { SubCatDoc } from './subcat';
 import { UserDoc } from './user';
 import { ProductDoc } from './product';
 import { InquiryState } from '../types/inquiry-status';

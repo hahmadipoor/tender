@@ -39,7 +39,6 @@ const Header = () => {
       {
         token && user && user.role==="Owner" && <Link to="/owner/dashboard">Dashboard</Link>
       }
-
       &nbsp;&nbsp;
       {
         user && user.phone
