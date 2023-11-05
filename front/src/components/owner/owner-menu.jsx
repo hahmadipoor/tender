@@ -5,11 +5,12 @@ const OwnerMenu=()=>{
     
     return(
         <div>
-            <br />
-            &nbsp;
-            <Link to="/owner/inquiries">Inquiries</Link>
-            &nbsp;&nbsp;
-            <Link to="/owner/offers">Offers</Link>
+            <div>
+                <Link to="/owner/inquiries">Inquiries</Link>
+            </div>
+            <div>
+                <Link to="/owner/offers">Offers</Link>
+            </div>
         </div>
     )
 }

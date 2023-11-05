@@ -14,7 +14,7 @@ import OwnerDashboard from './screens/owner-dashboard';
 const  App=()=> {
   return (
     <TenderContextProvider>
-        <div className="container">
+        <div >
                 <Router>
                     <Header />
                     <Switch>

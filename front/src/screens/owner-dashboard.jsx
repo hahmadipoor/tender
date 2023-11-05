@@ -9,11 +9,14 @@ const CustomerDashboard=()=>{
     const location=useLocation();
 
     return(
-        <div>
-            <h1>Customer Dashboard </h1>
-            <OwnerMenu />
-            {location.pathname==="/owner/inquiries" && <OwnerInquiries />}
-            {location.pathname==="/owner/offers" && <OwnerOffers />}
+        <div style={{display:'flex' }}>
+            <div style={{background:'#aa9988',marginRight:'10px', marginTop:'10px',paddingLeft:'5px',paddingRight:'5px'}}>
+                <OwnerMenu />
+            </div>
+            <div>
+                {location.pathname==="/owner/inquiries" && <OwnerInquiries />}
+                {location.pathname==="/owner/offers" && <OwnerOffers />}
+            </div>
         </div>
     )
 }

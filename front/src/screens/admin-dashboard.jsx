@@ -9,12 +9,15 @@ const AdminDashboard=()=>{
 
     const location = useLocation();
     return(
-        <div>
-            <h1>admin dashboard</h1>
-            <AdminMenu />
-            {location.pathname==="/admin/category" && <AdminCat />}
-            {location.pathname==="/admin/subcat" && <AdminSubcat />}
-            {location.pathname==="/admin/product" && <AdminProduct/> }
+        <div style={{display:'flex' }}>
+            <div style={{background:'#aa9988',marginRight:'10px', marginTop:'10px',paddingLeft:'5px',paddingRight:'5px'}}>
+                <AdminMenu />
+            </div>
+            <div>
+                {location.pathname==="/admin/category" && <AdminCat />}
+                {location.pathname==="/admin/subcat" && <AdminSubcat />}
+                {location.pathname==="/admin/product" && <AdminProduct/> }
+            </div>
         </div>
     )
 }

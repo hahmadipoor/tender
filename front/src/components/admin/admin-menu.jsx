@@ -5,13 +5,15 @@ const AdminMenu=()=>{
     
     return(
         <div>
-            <br />
-            &nbsp;
-            <Link to="/admin/category">Categories</Link>
-            &nbsp;&nbsp;
-            <Link to="/admin/subcat">Sub Categories</Link>
-            &nbsp;
-            <Link to="/admin/product">Products</Link>
+            <div>
+                <Link to="/admin/category">Categories</Link>
+            </div>
+            <div>
+                <Link to="/admin/subcat">Sub Categories</Link>
+            </div>
+            <div>
+                <Link to="/admin/product">Products</Link>
+            </div>
         </div>
     )
 }

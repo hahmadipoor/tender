@@ -17,7 +17,7 @@ const Header = () => {
   }
 
   return (
-    <div className="container">
+    <div style={{background:"#ffbbaa", height:'30px'}}>
       <Link to="/" >Tender</Link>
       &nbsp;&nbsp;
       {
